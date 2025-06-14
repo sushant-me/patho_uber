@@ -1,0 +1,394 @@
+:root {
+  --primary-color: #4a6bff;
+  --secondary-color: #00c853;
+  --accent-color: #ff3d00;
+  --dark: #2d3748;
+  --light: #f7fafc;
+  --light-text: #718096;
+  --danger: #e53e3e;
+  --warning: #dd6b20;
+  --success: #38a169;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: var(--dark);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.map-section {
+  flex: 2;
+  position: relative;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.control-panel {
+  flex: 1;
+  max-width: 400px;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.status-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.status-card.arriving {
+  border-left: 4px solid var(--primary-color);
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.status-icon {
+  font-size: 24px;
+  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(74, 107, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+}
+
+.status-text {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.status-details {
+  color: var(--light-text);
+  margin-bottom: 16px;
+}
+
+.driver-info {
+  display: none;
+  background: rgba(74, 107, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.driver-details {
+  display: flex;
+  align-items: center;
+}
+
+.driver-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.driver-name {
+  font-weight: 600;
+}
+
+.driver-rating {
+  color: var(--warning);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.eta-display {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.eta-item {
+  text-align: center;
+}
+
+.eta-label {
+  font-size: 12px;
+  color: var(--light-text);
+}
+
+.eta-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.action-button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+.button-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.destination-section {
+  margin-bottom: 20px;
+}
+
+.destination-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.suggestions {
+  background: white;
+  border-radius: 8px;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.suggestion-item:hover {
+  background: rgba(74, 107, 255, 0.05);
+}
+
+.calculator-section {
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.section-title i {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+.vehicle-options {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 8px;
+}
+
+.vehicle-button {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.vehicle-button.active {
+  border-color: var(--primary-color);
+  background: rgba(74, 107, 255, 0.05);
+}
+
+.vehicle-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.vehicle-name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.vehicle-price {
+  font-size: 12px;
+  color: var(--light-text);
+}
+
+.slider-group {
+  margin-bottom: 20px;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.slider-label {
+  font-weight: 500;
+}
+
+.slider-value {
+  font-weight: 600;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e2e8f0;
+  border-radius: 3px;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.demand-options {
+  margin-bottom: 20px;
+}
+
+.demand-status {
+  font-size: 12px;
+  color: var(--light-text);
+  margin-top: 4px;
+  text-align: center;
+}
+
+.price-breakdown {
+  background: rgba(74, 107, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.price-label {
+  color: var(--light-text);
+}
+
+.price-value {
+  font-weight: 500;
+}
+
+.demand-multiplier {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.total-price {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .map-section {
+    height: 60vh;
+  }
+
+  .control-panel {
+    max-width: 100%;
+    height: 40vh;
+  }
+}

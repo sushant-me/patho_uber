@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NepRide</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="map-section">
+        <div id="map"></div>
+      </div>
+      <div class="control-panel">
+        <div class="panel-header">
+          <div class="logo">NepRide</div>
+          <div class="user-avatar">SP</div>
+        </div>
+
+        <div class="status-card" id="status-card">
+          <div class="status-header">
+            <div class="status-icon" id="status-icon">🚗</div>
+            <div>
+              <div class="status-text" id="status-text">Ready to ride</div>
+              <div class="status-details" id="status-details">
+                Enter a famous place or location to start
+              </div>
+            </div>
+          </div>
+          <div class="driver-info" id="driver-info">
+            <div class="driver-details">
+              <div class="driver-avatar">RS</div>
+              <div>
+                <div class="driver-name">Raj Shrestha</div>
+                <div class="driver-rating">★★★★☆ 4.2</div>
+              </div>
+            </div>
+            <div class="eta-display">
+              <div class="eta-item">
+                <div class="eta-label">Distance</div>
+                <div class="eta-value" id="distance-value">-</div>
+              </div>
+              <div class="eta-item">
+                <div class="eta-label">ETA</div>
+                <div class="eta-value" id="eta-value">-</div>
+              </div>
+            </div>
+          </div>
+          <button class="action-button" id="request-btn">
+            <span class="button-icon">🚖</span>
+            <span class="button-text">Request Ride</span>
+          </button>
+        </div>
+
+        <div class="destination-section">
+          <div class="section-title">
+            <i>📍</i> Where to go? (Suggest a famous place)
+          </div>
+          <input
+            type="text"
+            id="destination-input"
+            placeholder="e.g., Durbar Square, Thamel"
+            class="destination-input"
+          />
+          <div id="suggestions" class="suggestions"></div>
+        </div>
+
+        <div class="calculator-section">
+          <div class="section-title"><i>💰</i> Fare Estimate</div>
+          <div class="vehicle-options">
+            <button class="vehicle-button active" data-type="bike">
+              <div class="vehicle-icon">🛵</div>
+              <div class="vehicle-name">Bike</div>
+              <div class="vehicle-price">From NPR 50</div>
+            </button>
+            <button class="vehicle-button" data-type="economy">
+              <div class="vehicle-icon">🚗</div>
+              <div class="vehicle-name">Economy</div>
+              <div class="vehicle-price">From NPR 100</div>
+            </button>
+            <button class="vehicle-button" data-type="premium">
+              <div class="vehicle-icon">🚙</div>
+              <div class="vehicle-name">Premium</div>
+              <div class="vehicle-price">From NPR 150</div>
+            </button>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <div class="slider-label">Time (min)</div>
+              <div class="slider-value" id="timeValue">-</div>
+            </div>
+            <input
+              type="range"
+              min="5"
+              max="60"
+              step="1"
+              value="15"
+              class="slider"
+              id="timeSlider"
+              disabled
+            />
+          </div>
+
+          <div class="demand-options">
+            <div id="demand-status" class="demand-status"></div>
+          </div>
+
+          <div class="price-breakdown">
+            <div class="price-row">
+              <div class="price-label">Base Fare</div>
+              <div class="price-value" id="basePrice">NPR 50.00</div>
+            </div>
+            <div class="price-row">
+              <div class="price-label" id="distancePrice">Distance (- km)</div>
+              <div class="price-value">NPR 0.00</div>
+            </div>
+            <div class="price-row">
+              <div class="price-label" id="timePrice">Time (- min)</div>
+              <div class="price-value">NPR 0.00</div>
+            </div>
+            <div class="price-row">
+              <div class="price-label">Demand Multiplier</div>
+              <div class="price-value demand-multiplier" id="demandMultiplier">
+                1.0x
+              </div>
+            </div>
+            <div class="total-price" id="totalPrice">NPR 0.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
